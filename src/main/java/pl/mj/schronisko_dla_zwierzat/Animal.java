@@ -38,6 +38,13 @@ public class Animal {
         return description;
     }
 
+    public String getShortDescription() {
+        if (description.length() < 100) {
+            return description;
+        } else
+            return description.substring(0, 100);
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
