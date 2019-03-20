@@ -2,11 +2,14 @@ package pl.mj.schronisko_dla_zwierzat;
 
 import org.springframework.stereotype.Repository;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 @Repository
-public class AnimalRepository{
+public class AnimalRepository {
 
     List<Animal> animalsList = new ArrayList<>();
 
@@ -17,29 +20,27 @@ public class AnimalRepository{
         animalsList.add(new Animal("Bonifacy", "hsdkj bjkblfd kgjhfdskl ", new Category("kot"), "https://static1.s-trojmiasto.pl/zdj/c/n/9/2098/620x0/2098166-Koty-to-czyste-zwierzeta-ale-zdarza-sie-ze-nie-bez-powodu-nie-odwiedzaja.jpg"));
     }
 
-    public void add(Animal animal){
+    public void add(Animal animal) {
         animalsList.add(animal);
     }
 
-    public List<Animal>findAll(){
+    public List<Animal> findAll() {
         return animalsList;
     }
 
-    public Animal findByName(String name){
-        for (Animal animal:animalsList) {
-            if (name.equals(animal.getName()))
-                return animal;
-        }
-        return null;
+    public List<Animal> findByName(@NotNull String name) {
+        return animalsList.stream()
+                .filter(animal -> name.equals(animal.getName()))
+                .collect(toList());
     }
 
-    public static List<Animal> getAnimalByCategory(List<Animal> list, Category category) {
-        List<Animal> animalListByCategory = new ArrayList<>();
-        for (Animal a : list) {
-            if (a.getCategory().equals(category)) {
-                animalListByCategory.add(a);
-            }
-        }
-        return animalListByCategory;
+    public List<Animal> getAnimalsList() {
+        return animalsList;
+    }
+
+    public List<Animal> findByCategory(@NotNull Category category) {
+        return animalsList.stream()
+                .filter(animal -> category.getName().equals(animal.getCategory().getName()))
+                .collect(toList());
     }
 }
