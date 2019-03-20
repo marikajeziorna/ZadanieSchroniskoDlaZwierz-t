@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Schronisko Reksio i Klakier</title>
+    <!--TODO Baner z logo i tytułem-->
+</head>
+<body>
+<h1 class="title">Schronisko Reksio i Klakier</h1>
+<h2 class="title"> Zwierzaki szukające domu</h2>
+<div>
+    <h3 th:href="@{.....}">Dodaj zwierzaka</h3>
+</div>
+
+<div>
+    <h3 class="title-category">Kategorie</h3>
+    <ul th:each="category: ${categoryRepository}">
+        <li th:text="${category.name}"></li>
+        <!--TODO filtrowanie po categories-+ zmiana opisu- jak wywołać metodę: getAnimalByCategory>-->
+    </ul>
+</div>
+<div>
+    <ul>
+        <li th:each="animal: ${animalsList}">
+            <a th:href="@{'/szczegoly?name=' + ${animal.name}}"><img th:src="${animal.imgUrl}"/></a>
+            <a th:href="@{'/szczegoly?name=' + ${animal.name}}" th:text="${animal.name}"></a>
+            <!--TODO 3. Jak wywołać metodę przez th: createShortDescription-->
+            <a th:href="@{'/szczegoly?name=' + ${animal.name}}">
+                <p th:text="${animal.description}"></p></a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+
+
+<!--Oprócz nazwy zwierzaka prezentujemy:
+  - zdjęcie
+  - 100 pierwszych znaków opisu
+  - Kliknięcie na:
+            - zdjęcie,
+            - tytuł
+            - opis
+            powinno przekierowywać na stronę ze szczegółami.-->
