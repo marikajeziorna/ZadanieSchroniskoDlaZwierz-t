@@ -24,8 +24,8 @@ public class AnimalController {
     @GetMapping("/")
     public String homePage(Model model){
         List<Animal> animalRepositoryAll = animalRepository.findAll();
+        List<String > categoryRepositoryAll = categoryRepository.findAll();
         model.addAttribute("animalsList", animalRepositoryAll);
-        List<Category> categoryRepositoryAll = categoryRepository.findAll();
         model.addAttribute("categoryRepository", categoryRepositoryAll);
         return "stronaGlowna";
     }
@@ -37,12 +37,25 @@ public class AnimalController {
         return "szczegoly";
     }
 
-    @PostMapping("/dodaj")
-    public String addForm(Animal animal){
-        animalRepository.add(animal);
-        return "stworzono";
+    @GetMapping("/zwierzakiPoKategorii")
+    public String byCategory(@RequestParam String category, Model model){
+        List<Animal> animalRepositoryByCategory = animalRepository.findByCategory(category);
+        model.addAttribute("animalsByCategory", animalRepositoryByCategory);
+        return "zwierzakiPoKategorii";
     }
 
+    @GetMapping("/dodaj")
+    public String showForm(Model model){
+        model.addAttribute("animal", new Animal());
+        List<String> categoryRepositoryAll = categoryRepository.findAll();
+        model.addAttribute("categoryList", categoryRepositoryAll);
+        return "dodajZwierzaka";
+    }
 
+    @PostMapping("/dodajZwierzaka")
+    public String addAnimalToRepository(Animal animal){
+        animalRepository.add(animal);
+        return "zwierzakDodany";
+    }
 
 }

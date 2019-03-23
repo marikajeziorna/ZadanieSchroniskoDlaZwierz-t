@@ -11,9 +11,16 @@
 <!--TODO Baner z logo i tytułem-->
 <a href="/">Powrót do listy</a>
 <h2 class="title">Dodaj zwierzaka do adopcji</h2>
-<form>
-
-
+<form action="/dodajZwierzaka" method="post" th:object="${animal}">
+    <input name="name" placeholder="Nazwa" th:field="*{name}"><br>
+    <input name="description" placeholder="Opis" th:field="*{description}"><br>
+    <select th:field="*{category}" th:remove="all-but-first">
+        <option th:each="category : ${categoryList}" th:text="${category}" th:value="${category}">.....</option>
+        <option> koty</option>
+        <option> inne</option>
+    </select><br>
+    <input name="imgUrl" placeholder="URL grafiki" th:field="*{imgUrl}"><br>
+    <button type="submit">Dodaj zwierzaka</button>
 </form>
 </body>
 </html>

@@ -8,12 +8,15 @@ import java.util.List;
 @Repository
 public class CategoryRepository {
 
-    List<Category> categoriesList = new ArrayList<>();
+    List<String> categoriesList = new ArrayList<>();
 
     public CategoryRepository() {
+        categoriesList.add("pies");
+        categoriesList.add("kot");
+        categoriesList.add("inne");
     }
 
-    public List<Category>findAll(){
+    public List<String>findAll(){
         return categoriesList;
     }
 

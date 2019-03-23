@@ -11,27 +11,20 @@
 <h1 class="title">Schronisko Reksio i Klakier</h1>
 <h2 class="title"> Zwierzaki szukające domu</h2>
 <div>
-    <a href="/dodaj">Dodaj zwierzaka</a>
+    <h3 class="title-category">Kategorie</h3>
+    <a href="/">Powrót do listy</a>
 </div>
 <div>
-    <ul th:each="category: ${categoryRepository}">
+    <ul th:each="animal: ${animalsByCategory}">
         <li>
-            <a th:href="@{'/zwierzakiPoKategorii?category=' +${category.toString()}}" th:text="${category.toString()}"></a>
-        </li>
-    </ul>
-</div>
-
-<div>
-    <ul  th:each="animal: ${animalsList}">
-        <li>
+            <!--TODO jak wywołać metodę filtrowanie po kategory-->
             <a th:href="@{'/szczegoly?name=' +${animal.name}}"><img th:src="${animal.imgUrl}"/></a>
             <a th:href="@{'/szczegoly?name=' +${animal.name}}" th:text="${animal.name}"></a>
             <a th:href="@{'/szczegoly?name=' +${animal.name}}"><p th:text="${animal.description}"></p></a>
+
         </li>
     </ul>
-
-
-
+</div>
 </div>
 </body>
 </html>
