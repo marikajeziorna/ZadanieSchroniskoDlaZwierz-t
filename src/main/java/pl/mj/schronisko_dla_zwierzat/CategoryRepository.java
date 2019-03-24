@@ -11,9 +11,9 @@ public class CategoryRepository {
     List<String> categoriesList = new ArrayList<>();
 
     public CategoryRepository() {
-        categoriesList.add("pies");
-        categoriesList.add("kot");
-        categoriesList.add("inne");
+        categoriesList.add("Pies");
+        categoriesList.add("Kot");
+        categoriesList.add("Inne");
     }
 
     public List<String>findAll(){

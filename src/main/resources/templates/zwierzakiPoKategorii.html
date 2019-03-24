@@ -12,7 +12,7 @@
             background: white;
             width: 800px;
             border: 25px lightskyblue;
-            padding: 25px;
+            padding: 20px;
             margin: auto;
             font-family: "American Typewriter";
             font-size: 26px;
@@ -27,7 +27,7 @@
         .title-category {
             font-family: "American Typewriter";
             font-size: 20px;
-            padding: 15px;
+            padding: 20px;
             margin: 25px;
         }
         .button-add {
@@ -55,18 +55,30 @@
             margin-left: 35px;
             padding: 10px;
         }
+        .img-thumbnail {
+            width: 180px;
+            high: 180px;
+            margin-outside: 30px;
+            margin-top: 20px;
+        }
     </style>
-    <div class="banner">
-        <h1>Schronisko Reksio i Klakier</h1>
-        <img src="https://st2.depositphotos.com/1007168/6107/v/950/depositphotos_61073131-stock-illustration-i-love-animals-with-paw.jpg"
-             height="80px">
+    <div class="container">
+        <div class="row">
+            <div class="banner">
+                <h1>Schronisko Reksio i Klakier</h1>
+            </div>
+
+            <div><img class="img-thumbnail"
+                      src="https://st2.depositphotos.com/1007168/6107/v/950/depositphotos_61073131-stock-illustration-i-love-animals-with-paw.jpg"
+                      height="80px"></div>
+        </div>
     </div>
 </head>
 <body>
 <div>
     <h2 class="title"> Zwierzaki szukające domu</h2>
     <a class="button-add" href="/">Powrót do listy</a>
-    <h3 class="title-category">Kategorie</h3>
+    <h3 class="title-category">Kategorie:</h3>
 </div>
 <div>
     <ul th:each="animal: ${animalsByCategory}">
