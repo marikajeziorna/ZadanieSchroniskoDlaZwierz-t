@@ -64,5 +64,9 @@ public class AnimalRepository {
     }
 
 
+    public String update(Animal animal){
+        return String.valueOf(animal);
+    }
+
 
 }

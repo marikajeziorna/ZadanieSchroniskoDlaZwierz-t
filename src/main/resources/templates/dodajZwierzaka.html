@@ -4,23 +4,75 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+        body {
+            background: url("http://www.lidertrans.com.pl/wp-content/uploads/2018/08/paw-print-941498_960_720.jpg");
+        }
+
+        .banner {
+            background: white;
+            width: 800px;
+            border: 25px lightskyblue;
+            padding: 25px;
+            margin: auto;
+            font-family: "American Typewriter";
+            font-size: 26px;
+        }
+
+        .title {
+            font-family: "American Typewriter";
+            font-size: 40px;
+            padding: 15px;
+            margin: 25px;
+        }
+
+        .form-conintener {
+            padding-top: 20px;
+            width: 1000px;
+            height: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button-add {
+            font-family: "Arial Black";
+            font-size: 18px;
+            color: black;
+            padding: 10px;
+            border-color: blue;
+            margin-left: 25px;
+        }
+
+
+    </style>
+    <div class="banner">
+        <h1>Schronisko Reksio i Klakier</h1>
+        <img src="https://st2.depositphotos.com/1007168/6107/v/950/depositphotos_61073131-stock-illustration-i-love-animals-with-paw.jpg"
+             height="80px">
+    </div>
     <title></title>
 </head>
 <body>
-<h1 class="title">Schronisko Reksio i Klakier</h1>
-<!--TODO Baner z logo i tytułem-->
-<a href="/">Powrót do listy</a>
-<h2 class="title">Dodaj zwierzaka do adopcji</h2>
-<form action="/dodajZwierzaka" method="post" th:object="${animal}">
-    <input name="name" placeholder="Nazwa" th:field="*{name}"><br>
-    <input name="description" placeholder="Opis" th:field="*{description}"><br>
-    <select th:field="*{category}" th:remove="all-but-first">
-        <option th:each="category : ${categoryList}" th:text="${category}" th:value="${category}">.....</option>
-        <option> koty</option>
-        <option> inne</option>
-    </select><br>
-    <input name="imgUrl" placeholder="URL grafiki" th:field="*{imgUrl}"><br>
-    <button type="submit">Dodaj zwierzaka</button>
-</form>
+<div>
+    <h2 class="title">Dodaj zwierzaka do adopcji</h2>
+    <a class="button-add" href="/">Powrót do listy</a>
+
+</div>
+<div class="form-conintener">
+    <div class="form-group">
+        <form action="/dodajZwierzaka" method="post" th:object="${animal}">
+            <input class="form-control" name="name" placeholder="Nazwa" th:field="*{name}"><br>
+            <textarea class="form-control" name="description" placeholder="Opis"
+                      th:field="*{description}"></textarea><br>
+            <select class="form-control" th:field="*{category}" th:remove="all-but-first">
+                <option th:each="category : ${categoryList}" th:text="${category}" th:value="${category}">.....</option>
+                <option> koty</option>
+                <option> inne</option>
+            </select><br>
+            <input class="form-control" name="imgUrl" placeholder="URL grafiki" th:field="*{imgUrl}"><br>
+            <button type="submit" class="btn btn-primary btn-block">Dodaj</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

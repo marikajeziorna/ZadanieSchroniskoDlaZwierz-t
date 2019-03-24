@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -34,6 +35,12 @@ public class AnimalController {
     public String details(@RequestParam String name, Model model){
         Animal animalRepositoryByName = animalRepository.findByName(name);
         model.addAttribute("nameAnimal", animalRepositoryByName);
+        return "szczegoly";
+    }
+
+    @PostMapping("/szczegoly")
+    public String editDetails(@RequestParam Animal animal){
+        String updateAnimal = animalRepository.update(animal);
         return "szczegoly";
     }
 

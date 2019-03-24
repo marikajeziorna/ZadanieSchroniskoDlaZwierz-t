@@ -66,4 +66,5 @@ public class Animal {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
